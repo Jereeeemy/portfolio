@@ -9,4 +9,6 @@ pages:
     paths:
       - public
   only:
-    - main
+    - main,;kl
+
+    

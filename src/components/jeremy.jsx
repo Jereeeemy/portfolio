@@ -1,6 +1,6 @@
 import React from 'react';
 import useScrollFadeIn from '../utils/useScrollFadeIn';
-import profilePic from '../img/moi.png';
+import profilePic from '/src/img/moi.png';
 
 const Jeremy = () => {
   const [ref, visible] = useScrollFadeIn();

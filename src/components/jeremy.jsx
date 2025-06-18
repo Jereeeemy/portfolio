@@ -1,6 +1,5 @@
 import React from 'react';
 import useScrollFadeIn from '../utils/useScrollFadeIn';
-import profilePic from '/src/img/moi.png';
 
 const Jeremy = () => {
   const [ref, visible] = useScrollFadeIn();
@@ -47,7 +46,6 @@ const Jeremy = () => {
           }}>
           Jérémy GARCIA
         </h1>
-        <img src={profilePic} alt="Jeremy" className="jeremy-img" style={{ marginBottom: '1rem' }} />
         <div className="jeremy-text">
           <p className='glass-bg'>
             Étudiant en 2e année de BUT Informatique, passionné par le développement web, les interfaces soignées et la création de projets à impact. Je conçois des solutions techniques avec une vraie attention à l'expérience utilisateur.

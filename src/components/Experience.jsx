@@ -36,7 +36,7 @@ const Experience = () => {
           }}>
             Stage - CERMEP Imagerie du Vivant
           </h3>
-          <img src='src/img/cermep.jpg' className='logo'></img>
+          <img src='/portfolio/img/cermep.jpg' className='logo'></img>
         </div>
 
         <div style={{ 

@@ -5,12 +5,12 @@ const Competence = () => {
   const [ref, visible] = useScrollFadeIn();
 
   const skills = [
-    { name: "Power BI", img: "src/img/competence/power-bi.png" },
+    { name: "Power BI", img: "/portfolio/img/competence/power-bi.png" },
     { name: "React", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
     { name: "SQL & PL/SQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" },
     { name: "FastAPI", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" },
-    { name: "Excel", img: "src/img/competence/excel.png" },
-    { name: "PowerAMC", img: "src/img/competence/poweramc.png" },
+    { name: "Excel", img: "/portfolio/img/competence/excel.png" },
+    { name: "PowerAMC", img: "/portfolio/img/competence/poweramc.png" },
     { name: "MongoDB", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
     { name: "Git", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
     { name: "Python", img: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },

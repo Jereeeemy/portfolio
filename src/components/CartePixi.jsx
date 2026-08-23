@@ -6,6 +6,7 @@ const CartePixi = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    
     // Initialize PixiJS application
     const initApp = async () => {
       try {

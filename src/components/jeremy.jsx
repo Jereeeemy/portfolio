@@ -48,12 +48,13 @@ const Jeremy = () => {
         </h1>
         <div className="jeremy-text">
           <p className='glass-bg'>
-            Étudiant en 2e année de BUT Informatique, passionné par le développement web, les interfaces soignées et la création de projets à impact. Je conçois des solutions techniques avec une vraie attention à l'expérience utilisateur.
+            Étudiant en 3ème année de BUT Informatique, passionné par la data, les interfaces soignées et la création de projets à impact. Actuellement en alternance chez MLP et futur étudiant à CPE.
           </p>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default Jeremy;

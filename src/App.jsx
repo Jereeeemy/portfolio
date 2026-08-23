@@ -1,62 +1,34 @@
-import { useEffect, useState } from 'react';
-import { getTimeSegment } from './utils/timeSegment';
-import nuage1 from './img/nuage1.png';
-import nuage2 from './img/nuage2.png';
-import nuage3 from './img/nuage3.png';
-import nuage4 from './img/nuage6.png';
-import nuage5 from './img/nuage5.png';
-import nuage6 from './img/nuage6.png';
 import './index.css';
-import CartePixi from './components/CartePixi';
-import SAE from './components/Sae';
-import Ecole from './components/ecole';
-import Competence from './components/Competence';
-import Contact from './components/Contact';
-import Jeremy from './components/jeremy';
-import Experience from './components/Experience';
+import { skillGroups } from './data/skills';
 
-
-const backgrounds = {
-  dawn: nuage1,
-  morning: nuage2,
-  afternoon: nuage3,
-  evening: nuage4,
-  sunset: nuage5,
-  night: nuage6
-};
+const base = '/portfolio/img/';
+const projects = [
+  { title: 'Didactypo', logo: 'logoDidactypo.png', image: 'didactypo.png', text: 'Application d’apprentissage de la dactylographie pour les plus jeunes, développée à quatre avec React et FastAPI. Exercices, classes et statistiques personnelles.' },
+  { title: 'Safly', logo: 'safly.png', image: 'saflyApp.png', text: 'Application Java de création et lecture de graphes : coloration D-Satur, Welsh & Powell et RLF, ainsi que gestion de conflits de vols.' },
+  { title: 'Power BI Dashboard', logo: 'competence/power-bi.png', image: 'stats.png', text: 'Tableaux de bord interactifs pour analyser des données business, suivre des indicateurs clés et faciliter la prise de décision.' },
+];
+const learning = [
+  ['realiser', 'Réaliser', 'Applications React / FastAPI, PHP et Symfony ; pratique de Python, JavaScript, Java et C.'],
+  ['optimiser', 'Optimiser', 'Conception d’algorithmes complexes, utilisation de design patterns et qualité de développement.'],
+  ['administrer', 'Administrer', 'Gestion de versions avec Git, utilisation de Docker, Azure et des environnements systèmes.'],
+  ['gerer', 'Gérer', 'Analyse de données avec Power BI et exploitation de données SQL, PL/SQL et MongoDB, compréhension des ERP et de la gestion de données (Hop, Pentaho).'],
+  ['conduire', 'Conduire', 'Conduite de projets en équipe, méthodes Agile et Cascade, rédaction de cahiers des charges.'],
+  ['collaborer', 'Collaborer', 'Communication et collaboration au sein de différents projets, gestion de son travail et de celui de son équipe.'],
+];
+const asset = (path) => (path.startsWith('http') || path.startsWith('/') ) ? path : `${base}${path}`;
 
 function App() {
-  const [segment, setSegment] = useState(getTimeSegment());
 
-  useEffect(() => {
-    document.body.style.backgroundImage = `url(${backgrounds[segment]})`;
-
-    const interval = setInterval(() => {
-      const newSegment = getTimeSegment();
-      if (newSegment !== segment) {
-        setSegment(newSegment);
-      }
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [segment]);
-
-  return (
-    <div className="app-container">
-
-      <Jeremy></Jeremy>
-
-      <SAE></SAE>
-
-      <Ecole></Ecole>
-
-      <Experience></Experience>
-
-      <Competence></Competence>
-
-      <Contact></Contact>
-    </div>
-  );
+  return <>
+    <header className="site-header"><a className="brand" href="#accueil" aria-label="Accueil"><img src={asset('logo.png')} alt="" /></a><nav aria-label="Navigation principale"><a href="#projets">Projets</a><a href="#parcours">Parcours</a><a href="#competences">Compétences</a><a className="nav-contact" href="#contact">Contact</a></nav></header>
+    <main className="app-container">
+      <section id="accueil" className="hero glass"><div className="hero-content"><p className="hero-eyebrow">Portfolio · BUT Informatique</p><h1>Jérémy<br /><span>Garcia</span></h1><p className="hero-summary">Étudiant en 3ème année de BUT Informatique, passionné par la data, les interfaces soignées et la création de projets à impact. Actuellement en alternance chez MLP et futur étudiant à CPE.</p><div className="hero-links"><a className="button button-primary" href="#projets">Découvrir mes projets</a><a className="button button-secondary" href="#contact">Me contacter</a></div></div></section>
+      <section id="projets" className="glass"><h2 className="section-title">Projets réalisés</h2><p className="section-intro">Des projets de formation conçus en équipe, avec une attention portée au besoin utilisateur et à la qualité de réalisation.</p><div className="projects-grid">{projects.map((p) => <article className="project-card" key={p.title}><img className="project-image" src={asset(p.image)} alt={`Aperçu de ${p.title}`} /><div className="project-body"><div className="project-heading"><img className="project-logo" src={asset(p.logo)} alt="" /><h3>{p.title}</h3></div><p>{p.text}</p></div></article>)}</div></section>
+      <section id="parcours" className="glass"><h2 className="section-title">BUT Informatique</h2><p className="section-intro">Un parcours généraliste qui m’a donné une base concrète en développement, données, systèmes et gestion de projet.</p><div className="learning-list">{learning.map(([className, title, text]) => <article className={`competence-block ${className}`} key={title}><div className="competence-title">{title}</div><div className="competence-text"><p>{text}</p></div></article>)}</div></section>
+      <section className="glass"><h2 className="section-title">En environnement professionnel</h2><p className="section-intro">Deux expériences complémentaires, entre développement web et systèmes d’information pour la finance.</p><div className="experience-list"><article className="experience-card"><img src={asset('mlp.png')} className="company-logo" alt="MLP" /><div><h3>Apprenti analyste développeur · MLP</h3><p className="experience-meta">SEPT. 2025 — AOÛT 2026 · LYON</p><p>Alternance chez Messageries Lyonnaises de Presse, au sein de l’équipe informatique Comptabilité et Finances.</p><ul><li>Analyse et développement autour de SAP ECC et BW</li><li>Contribution aux outils et données du système dans l'équipe comptabilité et finances</li></ul></div></article><article className="experience-card"><img src={asset('cermep.jpg')} className="company-logo" alt="CERMEP" /><div><h3>Stage · CERMEP Imagerie du Vivant</h3><p className="experience-meta">14 AVR. 2025 — 06 JUIN 2025 · LYON</p><p>Au sein de ce centre de recherche médicale, j’ai découvert un contexte professionnel exigeant et contribué à un projet numérique en conditions réelles.</p><ul><li>Développement d’un site web pour le CERMEP</li><li>Mise en place de Matomo Analytics</li></ul></div></article></div></section>
+      <section id="competences" className="glass"><h2 className="section-title">Compétences techniques</h2><p className="section-intro">Technologies et outils utilisés tout au long de ma formation et de mes projets.</p><div className="skills-groups">{skillGroups.map((group) => <section className="skill-group" key={group.title}><header className="skill-group-header"><h3>{group.title}</h3><p>{group.description}</p></header>{group.items.length > 0 ? <ul className="skill-list">{group.items.map(([name, image]) => <li key={name}>{image ? <img src={asset(image)} alt="" /> : <span className="skill-mark" aria-hidden="true">•</span>}<span>{name}</span></li>)}</ul> : <p className="skill-empty">Ajoutez vos langues ici.</p>}</section>)}</div></section>
+      <section id="contact" className="glass"><h2 className="section-title">Me contacter</h2><p className="section-intro">Vous avez une opportunité, un projet ou simplement envie d’échanger ? Écrivez-moi.</p><div className="contact-container"><a className="contact" href="mailto:jeremy.grc69@gmail.com"><span className="contact-label">Email</span><span className="contact-value">jeremy.grc69@gmail.com</span></a><a className="contact" href="https://www.linkedin.com/in/garciaj%C3%A9r%C3%A9my/" target="_blank" rel="noreferrer"><span className="contact-label">LinkedIn ↗</span><span className="contact-value">Jérémy Garcia</span></a><a className="contact" href="https://github.com/Jereeeemy" target="_blank" rel="noreferrer"><span className="contact-label">GitHub ↗</span><span className="contact-value">@Jereeeemy</span></a></div></section>
+    </main>
+  </>;
 }
-
 export default App;
